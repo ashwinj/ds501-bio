@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ashwin Jandhyala</title>
+  <style>
+    :root {
+      --bg: #f4efe6;
+      --ink: #1c1a17;
+      --muted: #6b645a;
+      --accent: #2f6f5e;
+      --rule: #d9d0c1;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.6;
+    }
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 64px 20px 80px;
+    }
+    header { margin-bottom: 40px; }
+    h1 {
+      font-size: 2.4rem;
+      margin: 0 0 6px;
+      letter-spacing: -0.01em;
+    }
+    .sub {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin: 0;
+    }
+    h2 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin: 40px 0 12px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+    }
+    p { margin: 0 0 16px; font-size: 1.05rem; }
+    a { color: var(--accent); }
+    figure { margin: 0; }
+    figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+      box-shadow: 0 8px 30px rgba(28, 26, 23, 0.18);
+    }
+    figcaption {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: 12px;
+      font-style: italic;
+    }
+    footer {
+      margin-top: 48px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Ashwin Jandhyala</h1>
+      <p class="sub">Austin, Texas &middot; University of Wisconsin&ndash;Madison</p>
+    </header>
+
+    <h2>About me</h2>
+    <p>
+      I'm from Austin, Texas, and I'm a student at the University of Wisconsin&ndash;Madison.
+      At home it's me, my grandma, my mom, my dad, my little brother Sid, and our dog Shadow.
+    </p>
+    <p>
+      I got into programming through robotics as a kid, and it stuck. These days I build AI
+      agents that can generate their own user interfaces on the fly, and I've spent time on
+      side projects like a multi-persona chat app, an AI-curated newsletter, and a book-recommendation
+      search engine. At UW I founded Strato VC, the school's first student-run venture club, which
+      raised a $3 million fund to invest in early-stage student startups.
+    </p>
+    <p>
+      More about my work is at <a href="https://ashwinjandhyala.vercel.app">ashwinjandhyala.vercel.app</a>.
+    </p>
+
+    <h2>A favorite painting</h2>
+    <figure>
+      <img src="nighthawks.jpg" alt="Nighthawks by Edward Hopper: three customers and a server inside a brightly lit diner late at night, seen through its large glass window from an empty street corner.">
+      <figcaption>
+        Edward Hopper, <em>Nighthawks</em>, 1942. Oil on canvas. Art Institute of Chicago.
+      </figcaption>
+    </figure>
+    <p style="margin-top: 20px;">
+      <em>Nighthawks</em> is my favorite painting. I like how much it says with so little: a
+      few people in a lit-up diner, an empty street, and no clear story about who they are or
+      why they're there. It feels calm and a little lonely at the same time.
+    </p>
+
+    <footer>DS 501 &middot; Stepstone 2</footer>
+  </main>
+</body>
+</html>
