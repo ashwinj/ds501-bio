@@ -4,105 +4,214 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ashwin Jandhyala</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <style>
+    /* Hopper's palette: night-street greens, the yellow diner light, a brick red */
     :root {
-      --bg: #f4efe6;
-      --ink: #1c1a17;
-      --muted: #6b645a;
-      --accent: #2f6f5e;
-      --rule: #d9d0c1;
+      --night: #0e2523;
+      --night-2: #163532;
+      --street: #23403a;
+      --frame: #1d3a2f;
+      --diner: #f2d98f;
+      --diner-2: #e6c36c;
+      --cream: #f8ecc4;
+      --ink: #2b2417;
+      --brick: #8c3b2a;
+      --glow: rgba(242, 217, 143, 0.35);
+      --sign: #d9c97a;
     }
     * { box-sizing: border-box; }
+    html { background: var(--night); }
     body {
       margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: Georgia, "Times New Roman", serif;
+      color: var(--cream);
+      font-family: "Lora", Georgia, serif;
       line-height: 1.6;
+      background:
+        radial-gradient(ellipse 70% 40% at 50% 38%, var(--glow), transparent 70%),
+        linear-gradient(180deg, var(--night) 0%, var(--night-2) 55%, var(--street) 100%);
+      min-height: 100vh;
     }
     main {
-      max-width: 720px;
+      max-width: 860px;
       margin: 0 auto;
-      padding: 64px 20px 80px;
+      padding: 56px 20px 72px;
     }
-    header { margin-bottom: 40px; }
-    h1 {
-      font-size: 2.4rem;
-      margin: 0 0 6px;
-      letter-spacing: -0.01em;
-    }
-    .sub {
-      color: var(--muted);
-      font-size: 1.05rem;
-      margin: 0;
-    }
-    h2 {
-      font-size: 0.85rem;
+
+    /* The "PHILLIES" sign band that runs across the top of the diner */
+    .sign {
+      background: var(--sign);
+      color: var(--ink);
+      font-family: "Oswald", "Arial Narrow", Impact, sans-serif;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--accent);
-      margin: 40px 0 12px;
-      padding-top: 24px;
-      border-top: 1px solid var(--rule);
+      letter-spacing: 0.08em;
+      padding: 10px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      border-radius: 6px 6px 0 0;
+      box-shadow: 0 0 40px var(--glow);
     }
-    p { margin: 0 0 16px; font-size: 1.05rem; }
-    a { color: var(--accent); }
-    figure { margin: 0; }
-    figure img {
+    .sign h1 {
+      margin: 0;
+      font-size: clamp(2rem, 6vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1;
+    }
+    .sign small {
+      font-size: clamp(0.8rem, 2vw, 1.1rem);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* The big diner window: dark green frame, warm lit interior */
+    .window {
+      background: var(--frame);
+      padding: 18px;
+      border-radius: 0 0 18px 18px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 60px var(--glow);
+    }
+    .interior {
+      background: linear-gradient(180deg, var(--cream) 0%, var(--diner) 100%);
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 36px clamp(20px, 5vw, 48px);
+      position: relative;
+      overflow: hidden;
+    }
+    /* faint reflection streak on the glass */
+    .interior::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg, rgba(255,255,255,0.35) 0%, transparent 35%);
+      pointer-events: none;
+    }
+    .interior > * { position: relative; }
+
+    .interior h2 {
+      font-family: "Oswald", "Arial Narrow", Impact, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.9rem;
+      color: var(--brick);
+      margin: 0 0 12px;
+    }
+    .interior p { margin: 0 0 14px; font-size: 1.08rem; }
+    .interior a { color: var(--brick); }
+
+    /* Diner-menu style fact list */
+    .menu {
+      list-style: none;
+      padding: 18px 0 4px;
+      margin: 24px 0 0;
+      border-top: 2px dashed var(--diner-2);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 8px 32px;
+      font-size: 1rem;
+    }
+    .menu li {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .menu li span:first-child {
+      font-family: "Oswald", "Arial Narrow", Impact, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+      color: var(--brick);
+      white-space: nowrap;
+    }
+    .menu li::before { content: none; }
+    .menu li .dots {
+      flex: 1;
+      border-bottom: 2px dotted var(--diner-2);
+      min-width: 12px;
+      transform: translateY(-4px);
+    }
+
+    /* The painting, hung outside on the street */
+    .painting {
+      margin: 56px 0 0;
+    }
+    .painting h2 {
+      font-family: "Oswald", "Arial Narrow", Impact, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.9rem;
+      color: var(--sign);
+      margin: 0 0 14px;
+    }
+    .painting figure { margin: 0; }
+    .painting img {
       width: 100%;
       height: auto;
       display: block;
-      border-radius: 4px;
-      box-shadow: 0 8px 30px rgba(28, 26, 23, 0.18);
+      border: 10px solid var(--frame);
+      border-radius: 3px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 50px var(--glow);
     }
-    figcaption {
-      color: var(--muted);
-      font-size: 0.92rem;
+    .painting figcaption {
       margin-top: 12px;
+      font-size: 0.95rem;
+      color: #cbbf98;
       font-style: italic;
     }
+
     footer {
-      margin-top: 48px;
-      color: var(--muted);
-      font-size: 0.85rem;
+      margin-top: 56px;
+      font-family: "Oswald", "Arial Narrow", Impact, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.75rem;
+      color: #7e9a8d;
+      text-align: center;
     }
   </style>
 </head>
 <body>
   <main>
-    <header>
+    <div class="sign">
       <h1>Ashwin Jandhyala</h1>
-      <p class="sub">Austin, Texas &middot; University of Wisconsin&ndash;Madison</p>
-    </header>
+      <small>Open all night</small>
+    </div>
 
-    <h2>About me</h2>
-    <p>
-      I'm from Austin, Texas, and I'm a student at the University of Wisconsin&ndash;Madison.
-      At home it's me, my grandma, my mom, my dad, my little brother Sid, and our dog Shadow.
-    </p>
-    <p>
-      I got into programming through robotics as a kid, and it stuck. These days I build AI
-      agents that can generate their own user interfaces on the fly, and I've spent time on
-      side projects like a multi-persona chat app, an AI-curated newsletter, and a book-recommendation
-      search engine. At UW I founded Strato VC, the school's first student-run venture club, which
-      raised a $3 million fund to invest in early-stage student startups.
-    </p>
-    <p>
-      More about my work is at <a href="https://ashwinjandhyala.vercel.app">ashwinjandhyala.vercel.app</a>.
-    </p>
+    <div class="window">
+      <div class="interior">
+        <h2>About me</h2>
+        <p>
+          I'm from Austin, Texas, and I'm a student at the University of Wisconsin&ndash;Madison.
+          I live with my grandma, my mom, my dad, my little brother Sid, and our dog Shadow.
+        </p>
+        <p>
+          I like programming. It started with robotics when I was growing up, and today I build
+          AI agents that generate their own user interfaces. I also founded Strato VC, UW's first
+          student-run venture club, which raised a $3 million fund to invest in student startups.
+          More of my work is at <a href="https://ashwinjandhyala.vercel.app">ashwinjandhyala.vercel.app</a>.
+        </p>
 
-    <h2>A favorite painting</h2>
-    <figure>
-      <img src="nighthawks.jpg" alt="Nighthawks by Edward Hopper: three customers and a server inside a brightly lit diner late at night, seen through its large glass window from an empty street corner.">
-      <figcaption>
-        Edward Hopper, <em>Nighthawks</em>, 1942. Oil on canvas. Art Institute of Chicago.
-      </figcaption>
-    </figure>
-    <p style="margin-top: 20px;">
-      <em>Nighthawks</em> is my favorite painting. I like how much it says with so little: a
-      few people in a lit-up diner, an empty street, and no clear story about who they are or
-      why they're there. It feels calm and a little lonely at the same time.
-    </p>
+        <ul class="menu">
+          <li><span>Hometown</span><span class="dots"></span><span>Austin, TX</span></li>
+          <li><span>School</span><span class="dots"></span><span>UW&ndash;Madison</span></li>
+          <li><span>Dog</span><span class="dots"></span><span>Shadow</span></li>
+          <li><span>Brother</span><span class="dots"></span><span>Sid</span></li>
+          <li><span>First code</span><span class="dots"></span><span>Robotics</span></li>
+          <li><span>Favorite painting</span><span class="dots"></span><span>Nighthawks</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="painting">
+      <h2>My favorite painting</h2>
+      <figure>
+        <img src="nighthawks.jpg" alt="Nighthawks by Edward Hopper: three customers and a server inside a brightly lit diner late at night, seen through its large glass window from an empty street corner.">
+        <figcaption>Edward Hopper, <em>Nighthawks</em>, 1942. Oil on canvas. Art Institute of Chicago.</figcaption>
+      </figure>
+    </section>
 
     <footer>DS 501 &middot; Stepstone 2</footer>
   </main>
